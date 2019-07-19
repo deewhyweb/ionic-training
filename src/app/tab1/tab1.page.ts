@@ -2,6 +2,7 @@
 import { Component } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { AddTaskPage } from '../add-task/add-task.page';
+import { RhmapSyncService } from '../rhmap-sync.service';
 
 @Component({
   selector: "app-tab1",
@@ -9,12 +10,12 @@ import { AddTaskPage } from '../add-task/add-task.page';
   styleUrls: ["tab1.page.scss"]
 })
 export class Tab1Page {
-  constructor(private modalController: ModalController) {}
+  items: Array<any>;
+  constructor(private modalController: ModalController, private rhmapSyncService: RhmapSyncService ) {}
 
   addTask() {
     console.log("Adding task");
     this.presentModal();
-  
   }
 
   async presentModal() {
@@ -24,5 +25,10 @@ export class Tab1Page {
     return await modal.present();
   }
 
+  editItem(item: string){
+    console.log(item);
+    //this.items.push(item);
+    this.presentModal();
+  }
 
 }

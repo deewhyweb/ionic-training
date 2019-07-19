@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RhmapSyncService } from '../rhmap-sync.service';
 
 @Component({
   selector: 'app-add-task',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-task.page.scss'],
 })
 export class AddTaskPage implements OnInit {
-
-  constructor() { }
+  item: string;
+  constructor(private rhmapSyncService: RhmapSyncService) { }
 
   ngOnInit() {
+    
+  }
+  saveItem() {
+    console.log(this.item);
+    this.rhmapSyncService.createItem(this.item)
+    .then(res => {
+      this.item = '';
+    })
+    .catch(err => {
+      console.error(err);
+    });
+  }
   }
 
-}
+
