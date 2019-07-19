@@ -6,4 +6,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+    <ion-grid>
+        <ion-row >
+          <ion-col>
+            <b>Item Name</b>
+          </ion-col>
+          <ion-col>
+              <b>Edit</b>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngFor="let record of rhmapSyncService.items ; let i = index" >
+              <ion-col>
+                  {{record.data.item}}
+                </ion-col>
+                <ion-col>
+                    <ion-button (click)="editItem(record)">Edit</ion-button>
+                  </ion-col>
+          </ion-row>
+    </ion-grid>
+</ion-content>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RhmapSyncService } from '../rhmap-sync.service';
 
 @Component({
   selector: 'app-tab3',
@@ -6,7 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+  items: Array<any>;
+  constructor(public rhmapSyncService: RhmapSyncService ) {
 
-  constructor() {}
+  }
+  editItem(item) {
+    console.log(item.key);
+  }
 
 }
