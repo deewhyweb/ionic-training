@@ -8,10 +8,14 @@ import { RhmapSyncService } from '../rhmap-sync.service';
 })
 export class AddTaskPage implements OnInit {
   item: string;
+  task: any;
   constructor(private rhmapSyncService: RhmapSyncService) { }
 
   ngOnInit() {
-    
+    console.log(this.task);
+    if (this.task) {
+      this.item = this.task.data.item;
+    }
   }
   saveItem() {
     console.log(this.item);

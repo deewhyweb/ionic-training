@@ -18,17 +18,20 @@ export class Tab1Page {
     this.presentModal();
   }
 
-  async presentModal() {
+  async presentModal(task = {}) {
     const modal = await this.modalController.create({
-      component: AddTaskPage
+      component: AddTaskPage,
+      componentProps: {
+        task
+      }
     });
     return await modal.present();
   }
 
-  editItem(item: string){
+  editItem(item: any){
     console.log(item);
     //this.items.push(item);
-    this.presentModal();
+    this.presentModal(item);
   }
 
 }
