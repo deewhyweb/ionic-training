@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>addTask</ion-title>
+    <ion-title>{{addTaskTitle}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,6 +8,8 @@
   <ion-item>
     <ion-label position="floating">Enter item</ion-label>
     <ion-input [(ngModel)]="item"></ion-input>
+    <ion-checkbox></ion-checkbox>
   </ion-item>
   <ion-button (click)="saveItem()"  expand="block">{{saveButtonTitle}}</ion-button>
+  <ion-button (click)="deleteItem(item)">Delete</ion-button>
 </ion-content>

@@ -39,6 +39,22 @@ export class RhmapSyncService {
      });
    }
 
+   updateItem(item) {
+    const data = {
+      item
+    };
+    return new Promise((resolve, reject) => {
+      sync.doUpdate(this.dataset, item.key, item.data, (res) => {
+        console.log(res);
+        resolve();
+      },
+      (err) => {
+       console.error(err);
+       reject(err);
+      });
+    });
+  }
+
    listItems() {
      return new Promise((resolve, reject) => {
       sync.doList(this.dataset, (records) => {
@@ -77,4 +93,17 @@ export class RhmapSyncService {
       }
     });
    }
+
+   deleteItem(uid: string) {
+    return new Promise((resolve, reject) => {
+      sync.doDelete (this.dataset, uid, (res) => {
+        console.log(res);
+        resolve();
+      },
+      (err) => {
+       console.error(err);
+       reject(err);
+      });
+    });
+  }
 }
